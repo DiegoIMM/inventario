@@ -1,0 +1,110 @@
+<main>
+    <nav class="hide-on-large-only">
+
+        <div class="nav-wrapper white black-text">
+            <!--<a href="#!" class=" black-text brand-logo">Sistema de Inventario</a>-->
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i
+                    class="black-text material-icons">menu</i></a>
+
+            <!--<a class="btn-floating btn-large halfway-fab waves-effect waves-light teal">-->
+            <!--<i class="material-icons">add</i>-->
+            <!--</a>-->
+
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav sidenav-fixed white black-text">
+        <!--<li>-->
+        <!--<div class="user-view black-text">-->
+        <!--<div class="background">-->
+        <!--<img class="responsive-img"-->
+        <!--src="https://orig00.deviantart.net/20eb/f/2015/030/6/f/_minflat__dark_material_design_wallpaper__4k__by_dakoder-d8fjqzu.jpg">-->
+        <!--</div>-->
+        <!--<a href="#user"><img class="circle"-->
+        <!--src="https://openclipart.org/image/2400px/svg_to_png/277081/Male-Avatar.png"></a>-->
+        <!--<a id="nombre"></a>-->
+        <!--<a id="email"></a>-->
+        <!--</div>-->
+        <!--</li>-->
+
+
+        <li><h1 class="flow-text center">Sistema de inventario</h1></li>
+
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">Menu</a></li>
+
+        <li><a href="index.html" class="redondeado"><i class="material-icons left">home</i>Inicio</a></li>
+        <li><a href="cliente.html" class="redondeado"><i class="material-icons left">account_circle</i>Cliente</a></li>
+        <li><a href="proveedor.html" class="redondeado"><i class="material-icons left">local_shipping</i>Proveedor</a></li>
+        <li><a href="producto.html" class="redondeado"><i class="material-icons left">shopping_cart</i>Producto</a></li>
+        <li><a href="compra.html" class="redondeado"><i class="material-icons left">payment</i>Compra</a></li>
+        <li><a href="venta.html" class="redondeado"><i class="material-icons left">attach_money</i>Venta</a></li>
+        <li><a href="promociones.html" class="redondeado"><i class="material-icons left">local_offer</i>Promociones</a></li>
+
+        <li><a href="configuracion.html" class="redondeado"><i class="material-icons left">settings</i>Configuracion</a></li>
+
+        <!--<li><a id="editarperfilmodal" class="modal-trigger tooltipped" data-position="bottom"-->
+        <!--data-tooltip="Editar Perfil"-->
+        <!--href="#modalEditarPerfil"><i class="black-text material-icons">edit</i></a></li>-->
+
+        <li><a class="red-text redondeado" id="cerrarSesion"><i class="material-icons left red-text">exit_to_app</i>Cerrar
+            Sesion</a></li>
+    </ul>
+
+
+    <!-- Modal Structure -->
+    <div id="modalEditarPerfil" class="modal modal-fixed-footer">
+        <div class="modal-content">
+
+            <h4>Peril de Usuario</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="epNombre" type="text" class="validate">
+                            <label for="epNombre">Nombre de Usuario</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input disabled value="correo" id="epMail" type="text" class="validate">
+                            <label for="epMail">Correo</label>
+                        </div>
+                    </div>
+
+                    <!--<div class="file-field input-field">-->
+                    <!--<div class="btn">-->
+                    <!--<span>File</span>-->
+                    <!--<input type="file">-->
+                    <!--</div>-->
+                    <!--<div class="file-path-wrapper">-->
+                    <!--<input id="foto" class="file-path validate" type="text">-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                    <!--<div class="input-field col s12">-->
+                    <!--<input id="epTelefono" type="number" class="validate">-->
+                    <!--<label for="epTelefono">Telefono</label>-->
+                    <!--</div>-->
+
+                    <!--</div>-->
+
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a id="guardarperfil" class="modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
+        </div>
+    </div>
+
+
+    <script>
+        M.AutoInit();
+        M.updateTextFields();
+
+        var elem = document.querySelector('.sidenav', ',modal');
+
+    </script>
+    <script src="js/menu.js"></script>
+</main>
+

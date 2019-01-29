@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
+    <title>Cliente</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+        header, main, footer {
+            padding-left: 300px;
+        }
+
+        @media only screen and (max-width: 992px) {
+            header, main, footer {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div class="menuContainer"></div>
+<main>
+
+
+    <div class="row">
+        <div class="col s12 m12 l12 xl12">
+
+            <div class="card-panel white redondeado">
+                <h4>Clientes</h4>
+                <table id="clientes" class="striped responsive-table centered col s12">
+
+                </table>
+                <a id="crearCliente" href="#modalAgregarCliente"
+                   class="waves-effect waves-light btn green pin-bottom modal-trigger hoverable redondeado"><i
+                        class="material-icons left">add</i>Agregar Cliente</a>
+
+            </div>
+
+
+        </div>
+    </div>
+</main>
+
+
+<!-- Modal para crear clientes -->
+<div id="modalAgregarCliente" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="row">
+
+            <h4 class="col l6">Crear Cliente</h4>
+            <div class="col l6 right-align">
+                <div class="switch">
+                    <label>
+                        Inhabilitado
+                        <input id="habilitado" type="checkbox" checked>
+                        <span class="lever"></span>
+                        Habilitado
+                    </label>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <form class="col l12 s12">
+
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <input id="epRut" type="text" class="validate">
+                    <label for="epRut">Rut</label>
+                </div>
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">account_circle</i>
+
+                    <input id="nombre" type="text" class="validate">
+                    <label for="nombre">Nombre</label>
+                </div>
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">contact_phone</i>
+
+                    <input id="epCelular" type="text" class="validate">
+                    <label for="epCelular">Celular</label>
+                </div>
+                <div class="input-field col s12 l6">
+                    <i class="fab fa-facebook-square prefix"></i>
+                    <input id="epFacebook" type="text" class="validate">
+                    <label for="epFacebook">Facebook</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">today</i>
+                    <input id="epFechaNacimiento" type="date" class="validate">
+                    <label for="epFechaNacimiento">Fecha Nacimiento</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">format_list_numbered</i>
+                    <input id="epGiro" type="text" class="validate">
+                    <label for="epGiro">Giro</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">contact_mail</i>
+                    <input id="epMail" type="text" class="validate">
+                    <label for="epMail">Mail</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">list</i>
+                    <input id="epTipoCliente" type="text" class="validate">
+                    <label for="epTipoCliente">Tipo Cliente</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fab fa-twitter-square prefix"></i>
+
+
+                    <input id="epTwitter" type="text" class="validate">
+                    <label for="epTwitter">Twitter</label>
+                </div>
+
+
+
+
+
+
+                <div id="selectDireccion"></div>
+
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a id="btnGuardar" class="modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
+    </div>
+</div>
+
+
+<div id="modalEditarCliente" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="row">
+
+            <h4 class="col l6">Editar Cliente</h4>
+            <div class="col l6 right-align">
+                <div class="switch">
+                    <label>
+                        Inhabilitado
+                        <input id="eehabilitado" type="checkbox" checked>
+                        <span class="lever"></span>
+                        Habilitado
+                    </label>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <form class="col l12 s12">
+
+                <div class="input-field col l6 ">
+                    <i class="material-icons prefix">perm_identity</i>
+
+                    <input id="eeRut" type="text" class="validate" disabled>
+                    <label for="eeRut">Rut</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+
+                    <input id="eeNombre" type="text" class="validate">
+                    <label for="eeNombre">Nombre</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">contact_phone</i>
+
+                    <input id="eeCelular" type="text" class="validate">
+                    <label for="eeCelular">Celular</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fab fa-facebook-square prefix"></i>
+                    <input id="eeFacebook" type="text" class="validate">
+                    <label for="eeFacebook">Facebook</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">today</i>
+                    <input id="eeFechaNacimiento" type="date" class="validate">
+                    <label for="eeFechaNacimiento">Fecha Nacimiento</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">format_list_numbered</i>
+                    <input id="eeGiro" type="text" class="validate">
+                    <label for="eeGiro">Giro</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">contact_mail</i>
+                    <input id="eeMail" type="text" class="validate">
+                    <label for="eeMail">Mail</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">list</i>
+
+                    <input id="eeTipoCliente" type="text" class="validate">
+                    <label for="eeTipoCliente">Tipo Cliente</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fab fa-twitter-square prefix"></i>
+
+                    <input id="eeTwitter" type="text" class="validate">
+                    <label for="eeTwitter">Twitter</label>
+                </div>
+
+
+
+                <div id="selectdireccioneditar"></div>
+
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a id="eebotonguardar" class="modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
+    </div>
+</div>
+
+
+<!--JavaScript at end of body for optimized loading-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).init(function () {
+        $('.menuContainer').load('./menu.html');
+    });
+</script>
+
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+<script>
+
+
+    M.AutoInit();
+
+    $(document).ready(function () {
+
+        $('select').formSelect();
+    });
+    M.updateTextFields();
+
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+<script src="js/cliente/cliente.js"></script>
+
+
+</body>
+</html>
