@@ -8,6 +8,9 @@ var config = {
     messagingSenderId: "288920973734"
 };
 firebase.initializeApp(config);
+var db = firebase.firestore();
+
+
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {

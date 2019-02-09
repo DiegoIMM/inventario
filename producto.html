@@ -59,86 +59,109 @@
 
                 </table>
 
-                <ul class="collapsible">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i>Crear Producto</div>
-                        <div class="collapsible-body">
-                            <div class="card-panel">
-                                <form class="col s12">
+                <ul class="collapsible redondeado">
+                    <li class="redondeado">
+                        <div class="collapsible-header redondeado"><i class="material-icons">add</i>Crear Producto</div>
+                        <div class="collapsible-body redondeado">
 
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <i class="fas fa-barcode prefix"></i>
+                            <form class="col s12">
 
-                                            <input id="crCodigo" type="text" class="validate">
-                                            <label for="crCodigo">Código</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">color_lens</i>
-                                            <input id="crColor" type="text" class="validate">
-                                            <label for="crColor">Nombre</label>
-                                        </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="fas fa-barcode prefix"></i>
+
+                                        <input id="crCodigo" type="text" class="validate">
+                                        <label for="crCodigo">Código</label>
                                     </div>
-                                    <div class="row">
-
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">description</i>
-                                            <input id="crDescripcion" type="text" class="validate">
-                                            <label for="crDescripcion">Descripción</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">attach_money</i>
-
-                                            <input id="crPrecioVenta" type="text" class="validate">
-                                            <label for="crPrecioVenta">Precio Venta</label>
-                                        </div>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">color_lens</i>
+                                        <input id="crNombre" type="text" class="validate">
+                                        <label for="crNombre">Nombre</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s4">
-                                            <i class="material-icons prefix">data_usage</i>
-                                            <input id="crstock" type="text" class="validate">
-                                            <label for="crstock">Stock Actual</label>
-                                        </div>
-                                        <div class="input-field col s2">
-                                            <select id="crmedida">
-                                                <optgroup label="Unidades">
-                                                    <option value="Un">Unidad</option>
-                                                    <option value="Do">Docena</option>
-                                                </optgroup>
-                                                <optgroup label="Kilos">
-                                                    <option value="Gr">Gramo</option>
-                                                    <option value="Kg">Kilo</option>
-                                                </optgroup>
-                                                <optgroup label="Litros">
-                                                    <option value="Ml">Mililitro</option>
-                                                    <option value="L">Litro</option>
-                                                </optgroup>
-                                            </select>
-                                            <label>Medida</label>
-                                        </div>
-                                        <div class="input-field col s4">
-                                            <i class="material-icons prefix">report</i>
-                                            <input id="crstockCritico" type="text" class="validate">
-                                            <label for="crstockCritico">Stock Critico</label>
-                                        </div>
-                                        <p class=" col s2 valign-wrapper" id="crlabelStockCritico">Unidad</p>
+                                </div>
+                                <div class="row">
+
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">description</i>
+                                        <input id="crDescripcion" type="text" class="validate">
+                                        <label for="crDescripcion">Descripción</label>
                                     </div>
-                                    <div id="etiquetass" class="chips chips-placeholder"></div>
-                                    <br>
-                                    <h3>Formula</h3>
-                                    <form id="formFormula">
-                                        <table id="formula" class="display" style="width:100%">
 
-                                        </table>
-                                    </form>
-                                    <div class="btn" id="agregarIngrediente">Agregar Ingrediente</div>
-                                    <div class="btn" id="guardarIngredientes">Guardar Ingrediente</div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s4">
+                                        <i class="material-icons prefix">data_usage</i>
+                                        <input id="crstock" type="text" class="validate">
+                                        <label for="crstock">Stock Actual</label>
+                                    </div>
+                                    <div class="input-field col s2">
+                                        <select id="crmedida">
+                                            <optgroup label="Unidades">
+                                                <option value="Un">Unidad</option>
+                                                <option value="Do">Docena</option>
+                                            </optgroup>
+                                            <optgroup label="Kilos">
+                                                <option value="Gr">Gramo</option>
+                                                <option value="Kg">Kilo</option>
+                                            </optgroup>
+                                            <optgroup label="Litros">
+                                                <option value="Ml">Mililitro</option>
+                                                <option value="L">Litro</option>
+                                            </optgroup>
+                                        </select>
+                                        <label>Medida</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <i class="material-icons prefix">report</i>
+                                        <input id="crstockCritico" type="text" class="validate">
+                                        <label for="crstockCritico">Stock Critico</label>
+                                    </div>
+                                    <p class=" col s2 valign-wrapper" id="crlabelStockCritico">Unidad</p>
+                                </div>
+                                <div id="etiquetass" class="chips chips-placeholder"></div>
+                                <br>
+                                <h3>Formula</h3>
+                                <table id="formula" class="striped" style="width:100%">
 
-                                </form>
-                                <a id="crearprodprep"
-                                   class="waves-effect waves-light btn green pin-bottom modal-trigger hoverable redondeado"><i
-                                        class="material-icons left">add</i>Crear Producto</a>
-                            </div>
+                                </table>
+
+                                <br>
+                                <a id="agregarIngrediente" class="waves-effect waves-light btn blue darken-4">
+                                    <i class="material-icons left">playlist_add</i>Agregar Ingrediente</a>
+
+                                <br>
+                                <br>
+                                <br>
+                                <!--<div class="row">-->
+                                    <!--<div class="col l6">-->
+                                        <!--<label>Precio Costo</label>-->
+                                        <!--<div class="card-panel">-->
+                                            <!--$500-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <div class="row">
+
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">attach_money</i>
+                                        <input id="crPrecioCosto" type="text" class="validate" value="0">
+                                        <label class="active" for="crPrecioCosto">Precio Costo</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">attach_money</i>
+                                        <input id="crPrecioVenta" type="text" class="validate" value="0">
+                                        <label class="active" for="crPrecioVenta">Precio Venta</label>
+                                    </div>
+                                </div>
+                            </form>
+                            <br>
+                            <br>
+                            <br>
+
+                            <a id="crearprodprep"
+                               class="waves-effect waves-light btn green pin-bottom hoverable redondeado">
+                                <i class="material-icons left">add</i>Crear Producto</a>
+
                         </div>
                     </li>
 

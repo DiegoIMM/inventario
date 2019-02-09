@@ -22,6 +22,9 @@ $("#edseVende").click(function () {
 $('#medida').change(function () {
     $('#labelStockCritico').text($('#medida :selected').text());
 });
+$('#crmedida').change(function () {
+    $('#crlabelStockCritico').text($('#crmedida :selected').text());
+});
 
 
 firebase.auth().onAuthStateChanged(function (user) {
@@ -140,6 +143,9 @@ firebase.auth().onAuthStateChanged(function (user) {
                 "<td class=\"input-field col s12\">" +
                 " <select onchange='sumaFormulas()'>" +
                 "<option value=\"\" disabled selected>Seleccione un producto</option>";
+                "<td class=\"input-field\">" +
+                " <select onchange='sumaFormulas()'>" +
+                "<option value=\"\" disabled selected>Productos</option>";
             db.collection("Usuarios").doc(user.uid).collection("Productos").where("paraFabricar", "==", true).get().then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
 
@@ -190,6 +196,146 @@ firebase.auth().onAuthStateChanged(function (user) {
         $("#formula_paginate").addClass("col l6 right-align flow-text");
         $("#formula").append("<br>");
         $('select').formSelect();
+        $("#crearprodprep").click(function () {
+
+            var ingredientes = [];
+            var codigoing, cantidading;
+            var filas = $('table#formula tr').length;
+
+            for (var i = 0; i < filas; i++) {
+                for (var k = 0; k < 4; k++) {
+                    if (k === 0) {
+                        //precioCosto = $('option:selected', $('table#formula tr')[i].children[k].children[0].children[3]).attr('data-costo');
+                        //  unidadDeMedida = $('option:selected', $('table#formula tr')[i].children[k].children[0].children[3]).attr('data-medida');
+                        codigoing = $('option:selected', $('table#formula tr')[i].children[k].children[0].children[3]).attr('value');
+
+
+                        // producto = $('table#formula tr')[i].children[k].children[0].children[3].value;
+                        // console.log(producto)
+
+                    } else if (k === 1) {
+                        cantidading = $('table#formula tr')[i].children[1].children[0].value;
+                        //console.log("Las Cantidades deberian ser: " + cantidad);
+
+                        // var m = $('table#formula tr')[i].children[1].children[0];
+                        // m.placeholder = "Medida: " + unidadDeMedida;
+
+                    } else if (k === 2) {
+                        //precioCosto = $('table#formula tr')[i].children[2].children[0].value;
+
+
+                        //  var b = $('table#formula tr')[i].children[2].children[0];
+                        //  b.value = precioCosto;
+
+
+                        // console.log("Los precios costo deberian ser: " + precioCosto)
+                    } else if (k === 3) {
+                        // total = cantidad * precioCosto;
+                        // console.log("Los totales costo deberian ser: " + total);
+                        //
+                        //
+                        // console.log($('table#formula tr')[i].children[3].children[0].value);
+                        // var a = $('table#formula tr')[i].children[3].children[0];
+                        // a.value = total;
+                        //
+                        // costoProducto += total;
+                    }
+
+                }
+                ingredientes.push({codigo: codigoing, cantidad: cantidading});
+
+
+            }
+
+            //Obtener los tags
+            var tags = [];
+            for (var i = 0; i < M.Chips.getInstance($('#etiquetass')).chipsData.length; i++) {
+                tags.push(M.Chips.getInstance($('#etiquetass')).chipsData[i].tag);
+
+            }
+            var seVende = true;
+
+            var paraFabricar = false;
+
+
+            var cantidad = $("#crstock").val();
+            var medida = $("#crmedida").val();
+            if (medida === "Do") {
+                cantidad = cantidad * 12;
+            }
+            if (medida === "Gr") {
+                cantidad = cantidad / 1000
+            }
+            if (medida === "Ml") {
+                cantidad = cantidad / 1000
+            }
+
+            var unidadMedida = $('#crmedida :selected').parent().attr('label');
+
+            var producto = {
+                proveedor: {
+                    id: user.uid,
+                    nombre: "Fabricacion Propia"
+                },
+                codigo: $("#crCodigo").val(),
+                seVende: seVende,
+                paraFabricar: paraFabricar,
+                nombre: $("#crNombre").val(),
+                costo: {
+                    precio: $('#crPrecioCosto').val(),
+                    precioPor: unidadMedida
+                },
+                descripcion: $("#crDescripcion").val(),
+                precioventa: $("#crPrecioVenta").val(),
+                stock: {
+                    cantidad: cantidad,
+                    medida: unidadMedida
+                },
+                stockcritico: $("#crstockCritico").val(),
+                ingredientes: ingredientes,
+                tags: tags
+            };
+            console.log(producto);
+            db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
+                .then(function () {
+
+
+                    for (let i = 0; i < producto.ingredientes.length; i++) {
+                        // Create a reference to the SF doc.
+                        var sfDocRef = db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.ingredientes[i].codigo);
+
+
+                        return db.runTransaction(function (transaction) {
+                            // This code may get re-run multiple times if there are conflicts.
+                            return transaction.get(sfDocRef).then(function (sfDoc) {
+                                if (!sfDoc.exists) {
+                                    throw "Document does not exist!";
+                                }
+
+                                var newPopulation = sfDoc.data().stock.cantidad - producto.ingredientes[i].cantidad;
+                                transaction.update(sfDocRef, {
+                                    stock: {
+                                        cantidad: newPopulation,
+                                        medida: sfDoc.data().stock.medida
+                                    }
+                                });
+                            });
+                        }).then(function () {
+                            console.log("Transaction successfully committed!");
+                        }).catch(function (error) {
+                            console.log("Transaction failed: ", error);
+                        });
+
+                    }
+
+
+                })
+                .catch(function (error) {
+                    console.error("Error writing document: ", error);
+                });
+
+
+        });
 
 
         $("#guardar").click(function () {
@@ -449,11 +595,15 @@ function sumaFormulas() {
                 console.log($('table#formula tr')[i].children[3].children[0].value);
                 var a = $('table#formula tr')[i].children[3].children[0];
                 a.value = total;
+
+
                 costoProducto += total;
             }
         }
     }
     console.log(costoProducto)
+    $("#crPrecioCosto").val(costoProducto);
+    $("#crPrecioVenta").val(costoProducto * 120 / 100);
 }
 
 

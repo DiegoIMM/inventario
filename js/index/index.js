@@ -1,4 +1,3 @@
-
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCXpdq1RwfMJlEe39etBlcRYAQxvLki88E",
@@ -10,7 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
+var db = firebase.firestore();
 var cuantosProveedores = 0;
 
 
@@ -30,9 +29,9 @@ firebase.auth().onAuthStateChanged(function (user) {
         });
     } else {
 
+
+
+        //redireccionar a login
+        console.log("no existe usuario");
     }
 });
-
-
-
-
