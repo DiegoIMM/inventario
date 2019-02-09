@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> Segunda Subida
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCXpdq1RwfMJlEe39etBlcRYAQxvLki88E",
@@ -9,8 +12,12 @@ var config = {
     messagingSenderId: "288920973734"
 };
 firebase.initializeApp(config);
+<<<<<<< HEAD
 
 
+=======
+var db = firebase.firestore();
+>>>>>>> Segunda Subida
 var cuantosProveedores = 0;
 
 
@@ -28,11 +35,23 @@ firebase.auth().onAuthStateChanged(function (user) {
         }).catch(function (error) {
             console.error("Error writing document: ", error);
         });
+<<<<<<< HEAD
     } else {
 
+=======
+
+    } else {
+        //redireccionar a login
+        console.log("no existe usuario");
+>>>>>>> Segunda Subida
     }
 });
 
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Segunda Subida

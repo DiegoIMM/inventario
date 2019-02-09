@@ -8,6 +8,12 @@ var config = {
     messagingSenderId: "288920973734"
 };
 firebase.initializeApp(config);
+<<<<<<< HEAD
+=======
+var db = firebase.firestore();
+
+
+>>>>>>> Segunda Subida
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
