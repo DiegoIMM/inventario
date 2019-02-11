@@ -143,9 +143,9 @@ firebase.auth().onAuthStateChanged(function (user) {
                 "<td class=\"input-field col s12\">" +
                 " <select onchange='sumaFormulas()'>" +
                 "<option value=\"\" disabled selected>Seleccione un producto</option>";
-                "<td class=\"input-field\">" +
-                " <select onchange='sumaFormulas()'>" +
-                "<option value=\"\" disabled selected>Productos</option>";
+            "<td class=\"input-field\">" +
+            " <select onchange='sumaFormulas()'>" +
+            "<option value=\"\" disabled selected>Productos</option>";
             db.collection("Usuarios").doc(user.uid).collection("Productos").where("paraFabricar", "==", true).get().then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
 
@@ -173,29 +173,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         }
 
 
-        $("#guardarIngredientes").click(function () {
-
-            var filas = $('table#formula tr').length;
-            for (var i = 0; i < filas; i++) {
-
-                for (var k = 0; k < 4; k++) {
-                    if (k === 0) {
-                        console.log("Valor del selector: " + $('table#formula tr')[i].children[k].children[0].children[3].value);
-
-                    } else {
-                        console.log("Valor de los datos de la tabla: " + $('table#formula tr')[i].children[k].children[0].value);
-                    }
-                }
-            }
-        });
-
-        $("select").val('10');
-        $("#formula_length").addClass("col s1 l1");
-        $("#formula_filter").addClass("col s11 l11");
-        $("#formula_info").addClass("col s6 l6");
-        $("#formula_paginate").addClass("col l6 right-align flow-text");
-        $("#formula").append("<br>");
-        $('select').formSelect();
         $("#crearprodprep").click(function () {
 
             var ingredientes = [];
@@ -271,7 +248,8 @@ firebase.auth().onAuthStateChanged(function (user) {
             }
 
             var unidadMedida = $('#crmedida :selected').parent().attr('label');
-
+            var precioCosto = 0;
+            precioCosto = $('#crPrecioCosto').val();
             var producto = {
                 proveedor: {
                     id: user.uid,
@@ -282,7 +260,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 paraFabricar: paraFabricar,
                 nombre: $("#crNombre").val(),
                 costo: {
-                    precio: $('#crPrecioCosto').val(),
+                    precio: precioCosto,
                     precioPor: unidadMedida
                 },
                 descripcion: $("#crDescripcion").val(),
@@ -299,10 +277,9 @@ firebase.auth().onAuthStateChanged(function (user) {
             db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
                 .then(function () {
 
-
-                    for (let i = 0; i < producto.ingredientes.length; i++) {
-                        // Create a reference to the SF doc.
-                        var sfDocRef = db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.ingredientes[i].codigo);
+                    producto.ingredientes.forEach(function (element) {
+                        console.log(element.codigo);
+                        var sfDocRef = db.collection("Usuarios").doc(user.uid).collection("Productos").doc(element.codigo);
 
 
                         return db.runTransaction(function (transaction) {
@@ -312,7 +289,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                                     throw "Document does not exist!";
                                 }
 
-                                var newPopulation = sfDoc.data().stock.cantidad - producto.ingredientes[i].cantidad;
+                                var newPopulation = sfDoc.data().stock.cantidad - (element.cantidad * producto.stock.cantidad);
                                 transaction.update(sfDocRef, {
                                     stock: {
                                         cantidad: newPopulation,
@@ -325,8 +302,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                         }).catch(function (error) {
                             console.log("Transaction failed: ", error);
                         });
-
-                    }
+                    });
 
 
                 })
@@ -339,7 +315,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
         $("#guardar").click(function () {
-
+            var precioCosto;
             //Obtener los tags
             var tags = [];
             for (var i = 0; i < M.Chips.getInstance($('#etiquetas')).chipsData.length; i++) {
@@ -367,6 +343,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 cantidad = cantidad / 1000
             }
 
+            precioCosto = parseInt($('#costo').val());
             var unidadMedida = $('#medida :selected').parent().attr('label');
             var precioPor = $('#precioPor :selected').parent().attr('label');
 
@@ -380,7 +357,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 paraFabricar: paraFabricar,
                 nombre: $("#nombre").val(),
                 costo: {
-                    precio: $('#costo').val(),
+                    precio: precioCosto,
                     precioPor: precioPor
                 },
                 descripcion: $("#descripcion").val(),
