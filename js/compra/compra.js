@@ -10,10 +10,37 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.firestore();
 
+var rutProveedor;
+
+function test(a) {
+    console.log(a);
+    rutProveedor = a.value;
+    $("#formula").empty();
+}
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
 
+
+//funcc Se carga el select con los proveedores activos
+        db.collection("Usuarios").doc(user.uid).collection("Proveedores").where("habilitado", "==", true).orderBy("rut")
+            .onSnapshot(function (querySnapshot) {
+
+
+                var productos = "";
+
+                querySnapshot.forEach(function (doc) {
+                    productos += "<option value=\"" + doc.data().rut + "\">" + doc.data().nombre + "</option>";
+                });
+
+
+                //  console.log("Proveedores activos actualmente: ", productos);
+
+                $("#proveedor").append(productos);
+
+                $('select').formSelect();
+
+            });
 
 
 //funcc Se trabaja en el formulario dinamico de las formulas para preparar
@@ -21,15 +48,14 @@ firebase.auth().onAuthStateChanged(function (user) {
 
         function nuevo() {
             var preciocosto = 0;
-            productosformula = "<tr>" +
+            var productosformula = "<tr>" +
                 "<td class=\"input-field\">" +
                 " <select onchange='sumaFormulas()'>" +
                 "<option value=\"\" disabled selected>Productos</option>";
-            db.collection("Usuarios").doc(user.uid).collection("Productos").where("paraFabricar", "==", true).get().then(function (querySnapshot) {
+            db.collection("Usuarios").doc(user.uid).collection("Productos").where("proveedor.id", "==", rutProveedor).where("formula", "==", false).get().then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-
-                    productosformula += "<option data-medida=\"" + doc.data().stock.medida + "\" data-costo=\"" + doc.data().costo.precio + "\" value=\"" + doc.data().codigo + "\">" + doc.data().nombre + "</option>";
-                    preciocosto = doc.data().costo.precio;
+                    productosformula += "<option data-medida=\"" + doc.data().stock.medida + "\" data-costo=\"" + doc.data().costo + "\" value=\"" + doc.data().codigo + "\">" + doc.data().nombre + "</option>";
+                    preciocosto = doc.data().costo;
                 });
 
                 productosformula += "</select>" +
@@ -57,7 +83,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log("no existe usuario");
     }
 });
-
 
 
 function sumaFormulas() {

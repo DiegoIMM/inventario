@@ -37,7 +37,7 @@
         <div class="col s12 m12 l12 xl12">
 
             <div class="card-panel white redondeado z-depth-1-half">
-                <h5>"Materias Primas"</h5>
+                <h5>Productos</h5>
                 <table id="productos" class="responsive-table striped centered col s12">
 
                 </table>
@@ -54,118 +54,13 @@
         <div class="col s12 m12 l12 xl12">
 
             <div class="card-panel white redondeado z-depth-1-half">
-                <h5>Productos</h5>
-                <table id="productosPreparados" class="responsive-table striped centered col s12">
+                <h5>Formulas</h5>
+                <table id="Formulas" class="responsive-table striped centered col s12">
 
                 </table>
-
-                <ul class="collapsible redondeado">
-                    <li class="redondeado">
-                        <div class="collapsible-header redondeado"><i class="material-icons">add</i>Crear Producto</div>
-                        <div class="collapsible-body redondeado">
-
-                            <form class="col s12">
-
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <i class="fas fa-barcode prefix"></i>
-
-                                        <input id="crCodigo" type="text" class="validate">
-                                        <label for="crCodigo">Código</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <i class="material-icons prefix">color_lens</i>
-                                        <input id="crNombre" type="text" class="validate">
-                                        <label for="crNombre">Nombre</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">description</i>
-                                        <input id="crDescripcion" type="text" class="validate">
-                                        <label for="crDescripcion">Descripción</label>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s4">
-                                        <i class="material-icons prefix">data_usage</i>
-                                        <input id="crstock" type="text" class="validate">
-                                        <label for="crstock">Stock Actual</label>
-                                    </div>
-                                    <div class="input-field col s2">
-                                        <select id="crmedida">
-                                            <optgroup label="Unidades">
-                                                <option value="Un">Unidad</option>
-                                                <option value="Do">Docena</option>
-                                            </optgroup>
-                                            <optgroup label="Kilos">
-                                                <option value="Gr">Gramo</option>
-                                                <option value="Kg">Kilo</option>
-                                            </optgroup>
-                                            <optgroup label="Litros">
-                                                <option value="Ml">Mililitro</option>
-                                                <option value="L">Litro</option>
-                                            </optgroup>
-                                        </select>
-                                        <label>Medida</label>
-                                    </div>
-                                    <div class="input-field col s4">
-                                        <i class="material-icons prefix">report</i>
-                                        <input id="crstockCritico" type="text" class="validate">
-                                        <label for="crstockCritico">Stock Critico</label>
-                                    </div>
-                                    <p class=" col s2 valign-wrapper" id="crlabelStockCritico">Unidad</p>
-                                </div>
-                                <div id="etiquetass" class="chips chips-placeholder"></div>
-                                <br>
-                                <h3>Formula</h3>
-                                <table id="formula" class="striped" style="width:100%">
-
-                                </table>
-
-                                <br>
-                                <a id="agregarIngrediente" class="waves-effect waves-light btn blue darken-4">
-                                    <i class="material-icons left">playlist_add</i>Agregar Ingrediente</a>
-
-                                <br>
-                                <br>
-                                <br>
-                                <!--<div class="row">-->
-                                    <!--<div class="col l6">-->
-                                        <!--<label>Precio Costo</label>-->
-                                        <!--<div class="card-panel">-->
-                                            <!--$500-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <div class="row">
-
-                                    <div class="input-field col s6">
-                                        <i class="material-icons prefix">attach_money</i>
-                                        <input id="crPrecioCosto" type="number" class="validate" value="0">
-                                        <label class="active" for="crPrecioCosto">Precio Costo</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <i class="material-icons prefix">attach_money</i>
-                                        <input id="crPrecioVenta" type="number" class="validate" value="0">
-                                        <label class="active" for="crPrecioVenta">Precio Venta</label>
-                                    </div>
-                                </div>
-                            </form>
-                            <br>
-                            <br>
-                            <br>
-
-                            <a id="crearprodprep"
-                               class="waves-effect waves-light btn green pin-bottom hoverable redondeado">
-                                <i class="material-icons left">add</i>Crear Producto</a>
-
-                        </div>
-                    </li>
-
-                </ul>
+                <a id="crearform" href="#modalAgregarFormula"
+                   class="waves-effect waves-light btn green pin-bottom modal-trigger hoverable redondeado">
+                    <i class="material-icons left">add</i>Crear Formula</a>
 
 
             </div>
@@ -221,51 +116,41 @@
 
                 </div>
                 <div class="row">
-
+                    <div class="input-field col s2">
+                        <select id="medida">
+                            <option value="Unidad">Unidad</option>
+                            <option value="Gramo">Gramo</option>
+                            <option value="ML">Mililitro</option>
+                        </select>
+                        <label>Medida</label>
+                    </div>
                     <div class="input-field col s4">
                         <i class="material-icons prefix">credit_card</i>
                         <input id="costo" type="number" class="validate">
                         <label for="costo">Precio Costo</label>
                     </div>
-                    <div class="input-field col s2">
-                        <select id="precioPor">
-                            <optgroup label="Unidades">
-                                <option value="Un">Unidad</option>
-                                <option value="Do">Docena</option>
-                            </optgroup>
-                            <optgroup label="Kilos">
-                                <option value="Gr">Gramo</option>
-                                <option value="Kg">Kilo</option>
-                            </optgroup>
-                            <optgroup label="Litros">
-                                <option value="Ml">Mililitro</option>
-                                <option value="L">Litro</option>
-                            </optgroup>
-                        </select>
-                        <label>Precio por</label>
-                    </div>
-                    <div class="input-field col s4">
+
+                    <div class="input-field col s6">
                         <i class="material-icons prefix">data_usage</i>
                         <input id="stock" type="text" class="validate">
                         <label for="stock">Stock Actual</label>
                     </div>
-                    <div class="input-field col s2">
-                        <select id="medida">
-                            <optgroup label="Unidades">
-                                <option value="Un">Unidad</option>
-                                <option value="Do">Docena</option>
-                            </optgroup>
-                            <optgroup label="Kilos">
-                                <option value="Gr">Gramo</option>
-                                <option value="Kg">Kilo</option>
-                            </optgroup>
-                            <optgroup label="Litros">
-                                <option value="Ml">Mililitro</option>
-                                <option value="L">Litro</option>
-                            </optgroup>
-                        </select>
-                        <label>Medida</label>
+                    <!--<div class="input-field col s4">
+                        <i class="material-icons prefix">credit_card</i>
+                        <input id="precioPor" type="number" class="validate">
+                        <label for="precioPor">Precio por</label>
                     </div>
+                    <div class="input-field col s2">
+                        <select id="precioPorMedida">
+                            <option value="Un">Unidad</option>
+                            <option value="Gr">Gramo</option>
+                            <option value="Ml">Mililitro</option>
+                        </select>
+                        <label>Precio por</label>
+                    </div>-->
+                </div>
+                <div class="row">
+
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
@@ -302,20 +187,6 @@
                             <label for="precioVenta">Precio Venta</label>
                         </div>
                     </div>
-                    <div class="col l6">
-                        <div class="switch">
-                            ¿Preparare otros productos con este?
-                            <br>
-                            <label>
-                                No
-                                <input id="paraFabricar" type="checkbox">
-                                <span class="lever"></span>
-                                Si
-                            </label>
-                        </div>
-
-
-                    </div>
                 </div>
 
                 <div id="etiquetas" class="chips chips-placeholder"></div>
@@ -325,7 +196,110 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a id="guardar" class="modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
+        <a id="guardarProducto" class="modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
+    </div>
+</div>
+<div id="modalAgregarFormula" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="row">
+
+            <h4 class="col l6">Crear Producto</h4>
+            <!--<div class="col l6 right-align">-->
+            <!--<div class="switch">-->
+            <!--<label>-->
+            <!--Inhabilitado-->
+            <!--<input type="checkbox">-->
+            <!--<span class="lever"></span>-->
+            <!--Habilitado-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+
+        <form class="col s12">
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-barcode prefix"></i>
+
+                    <input id="crCodigo" type="text" class="validate">
+                    <label for="crCodigo">Código</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">color_lens</i>
+                    <input id="crNombre" type="text" class="validate">
+                    <label for="crNombre">Nombre</label>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">description</i>
+                    <input id="crDescripcion" type="text" class="validate">
+                    <label for="crDescripcion">Descripción</label>
+                </div>
+
+            </div>
+            <!-- <div class="row">
+                 <div class="input-field col s2">
+                     <select id="crmedida">
+                         <option value="Un">Unidad</option>
+                         <option value="Gr">Gramo</option>
+                         <option value="Ml">Mililitro</option>
+                     </select>
+                     <label>Medida</label>
+                 </div>
+                 <div class="input-field col s4">
+                     <i class="material-icons prefix">data_usage</i>
+                     <input id="crstock" type="number" class="validate">
+                     <label for="crstock">Stock Actual</label>
+                 </div>
+                 <div class="input-field col s4">
+                     <i class="material-icons prefix">report</i>
+                     <input id="crstockCritico" type="text" class="validate">
+                     <label for="crstockCritico">Stock Critico</label>
+                 </div>
+                 <p class=" col s2 valign-wrapper" id="crlabelStockCritico">Unidad</p>
+             </div>-->
+            <div id="etiquetass" class="chips chips-placeholder"></div>
+            <br>
+            <h3>Formula</h3>
+            <table id="formula" class="striped" style="width:100%">
+
+            </table>
+
+            <br>
+            <a id="agregarIngrediente" class="waves-effect waves-light btn blue darken-4">
+                <i class="material-icons left">playlist_add</i>Agregar Ingrediente</a>
+
+            <br>
+            <br>
+            <br>
+            <!--<div class="row">-->
+            <!--<div class="col l6">-->
+            <!--<label>Precio Costo</label>-->
+            <!--<div class="card-panel">-->
+            <!--$500-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="row">
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">attach_money</i>
+                    <input id="crPrecioCosto" type="number" class="validate" value="0">
+                    <label class="active" for="crPrecioCosto">Precio Costo</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">attach_money</i>
+                    <input id="crPrecioVenta" type="number" class="validate" value="0">
+                    <label class="active" for="crPrecioVenta">Precio Venta</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a id="guardarFormula" class="modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
     </div>
 </div>
 
@@ -454,20 +428,7 @@
                             <label for="edprecioVenta">Precio Venta</label>
                         </div>
                     </div>
-                    <div class="col l6">
-                        <div class="switch">
-                            ¿Preparare otros productos con este?
-                            <br>
-                            <label>
-                                No
-                                <input id="edparaFabricar" type="checkbox">
-                                <span class="lever"></span>
-                                Si
-                            </label>
-                        </div>
 
-
-                    </div>
                 </div>
 
                 <div id="edetiquetas" class="chips chips-placeholder"></div>

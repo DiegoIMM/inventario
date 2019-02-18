@@ -30,7 +30,7 @@ $('#crmedida').change(function () {
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
 // funcc escucho los datos y los pinto en la tabla creada
-        db.collection("Usuarios").doc(user.uid).collection("Productos").orderBy("codigo")
+        db.collection("Usuarios").doc(user.uid).collection("Productos").where("formula", "==", false).orderBy("codigo")
             .onSnapshot(function (querySnapshot) {
                 $("#productos").empty();
                 //$("#cargandotabla").empty();
@@ -113,6 +113,90 @@ firebase.auth().onAuthStateChanged(function (user) {
             });
 
 
+// funcc escucho los datos y los pinto en la tabla creada
+        db.collection("Usuarios").doc(user.uid).collection("Productos").where("formula", "==", true).orderBy("codigo")
+            .onSnapshot(function (querySnapshot) {
+                $("#Formulas").empty();
+                //$("#cargandotabla").empty();
+
+                var formulas = "";
+                formulas +=
+                    " <thead>\n" +
+                    "<tr>" +
+                    "<th>Codigo</th>" +
+                    "<th>Nombre</th>" +
+                    "<th>Descripcion</th>" +
+                    "<th>Costo</th>" +
+                    "<th>Precio Venta</th>" +
+
+                    "</tr>" +
+                    "</thead>" +
+                    "<tbody>";
+
+                querySnapshot.forEach(function (doc) {
+                    var codigo = doc.data().codigo;
+                    var descripcion = doc.data().descripcion;
+                    var nombre = doc.data().nombre;
+                    var costo = doc.data().costo;
+                    var precioVenta = doc.data().precioventa;
+                    formulas += "<tr class=\"hoverable\" style=\"cursor: pointer\" data-codigo=" + codigo + ">;" +
+                        "<td>" + codigo + "</td>" +
+                        "<td>" + nombre + "</td>" +
+                        "<td>" + descripcion + "</td>" +
+                        "<td>" + costo + "</td>" +
+                        "<td>" + precioVenta + "</td>" +
+
+                        // "<td>" +
+                        // "<a class=\"btn-floating hoverable waves-effect waves-light yellow\"><i class=\"material-icons\">edit</i></a>\n" +
+                        // "<a class=\"btn-floating hoverable waves-effect waves-light red\"><i class=\"material-icons\">delete</i></a>\n" +
+                        // "</td>" +
+                        "</tr>";
+                });
+
+
+                // console.log("Productos: ", productos);
+                formulas += "</tbody>";
+
+                $("#Formulas").append(formulas);
+                $("#Formulas").dataTable().fnDestroy();
+
+                $('#Formulas').DataTable({
+                    "language": {
+                        "sProcessing": "Procesando...",
+                        "sLengthMenu": "Mostrar:_MENU_",
+                        "sZeroRecords": "No se encontraron resultados",
+                        "sEmptyTable": "Ningún dato disponible en esta tabla",
+                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Buscar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Cargando...",
+                        "oPaginate": {
+                            "sFirst": "Primero",
+                            "sLast": "Último",
+                            "sNext": "<i class=\"material-icons\">navigate_next</i>",
+                            "sPrevious": "<i class=\"material-icons\">navigate_before</i>"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        }
+                    }
+                });
+                $("select").val('10');
+                $("#Formulas_length").addClass("col s1 l1");
+                $("#Formulas_filter").addClass("col s11 l11");
+                $("#Formulas_info").addClass("col s6 l6");
+                $("#Formulas_paginate").addClass("col l6 right-align flow-text");
+                $("#Formulas").append("<br>");
+                $('select').formSelect();
+
+            });
+
+
 //funcc Se carga el select con los proveedores activos
         db.collection("Usuarios").doc(user.uid).collection("Proveedores").where("habilitado", "==", true).orderBy("rut")
             .onSnapshot(function (querySnapshot) {
@@ -140,17 +224,16 @@ firebase.auth().onAuthStateChanged(function (user) {
         function nuevo() {
             var preciocosto = 0;
             productosformula = "<tr>" +
-                "<td class=\"input-field col s12\">" +
+
+                "<td class=\"input-field\">" +
                 " <select onchange='sumaFormulas()'>" +
-                "<option value=\"\" disabled selected>Seleccione un producto</option>";
-            "<td class=\"input-field\">" +
-            " <select onchange='sumaFormulas()'>" +
-            "<option value=\"\" disabled selected>Productos</option>";
-            db.collection("Usuarios").doc(user.uid).collection("Productos").where("paraFabricar", "==", true).get().then(function (querySnapshot) {
+                "<option value=\"\" disabled selected>Productos</option>";
+            db.collection("Usuarios").doc(user.uid).collection("Productos").where("formula", "==", false).
+            orderBy("codigo").get().then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
 
-                    productosformula += "<option data-medida=\"" + doc.data().stock.medida + "\" data-costo=\"" + doc.data().costo.precio + "\" value=\"" + doc.data().codigo + "\">" + doc.data().nombre + "</option>";
-                    preciocosto = doc.data().costo.precio;
+                    productosformula += "<option data-medida=\"" + doc.data().stock.medida + "\" data-costo=\"" + doc.data().costo + "\" value=\"" + doc.data().codigo + "\">" + doc.data().nombre + "</option>";
+                    preciocosto = doc.data().costo;
                 });
 
                 productosformula += "</select>" +
@@ -173,41 +256,42 @@ firebase.auth().onAuthStateChanged(function (user) {
         }
 
 
-        $("#crearprodprep").click(function () {
+        $("#guardarFormula").click(function () {
 
+            //precioCosto = $('option:selected', $('table#formula tr')[i].children[k].children[0].children[3]).attr('data-costo');
+            var precioCosto;
             var ingredientes = [];
             var codigoing, cantidading;
-            var filas = $('table#formula tr').length;
 
+            var filas = $('table#formula tr').length;
             for (var i = 0; i < filas; i++) {
                 for (var k = 0; k < 4; k++) {
                     if (k === 0) {
-                        //precioCosto = $('option:selected', $('table#formula tr')[i].children[k].children[0].children[3]).attr('data-costo');
+                        // console.log("Los precios costo deberian ser: " + precioCosto)
+
+
                         //  unidadDeMedida = $('option:selected', $('table#formula tr')[i].children[k].children[0].children[3]).attr('data-medida');
                         codigoing = $('option:selected', $('table#formula tr')[i].children[k].children[0].children[3]).attr('value');
 
-
                         // producto = $('table#formula tr')[i].children[k].children[0].children[3].value;
                         // console.log(producto)
-
                     } else if (k === 1) {
                         cantidading = $('table#formula tr')[i].children[1].children[0].value;
+
                         //console.log("Las Cantidades deberian ser: " + cantidad);
 
                         // var m = $('table#formula tr')[i].children[1].children[0];
                         // m.placeholder = "Medida: " + unidadDeMedida;
-
                     } else if (k === 2) {
+
+
                         //precioCosto = $('table#formula tr')[i].children[2].children[0].value;
 
 
                         //  var b = $('table#formula tr')[i].children[2].children[0];
                         //  b.value = precioCosto;
-
-
-                        // console.log("Los precios costo deberian ser: " + precioCosto)
-                    } else if (k === 3) {
                         // total = cantidad * precioCosto;
+                    } else if (k === 3) {
                         // console.log("Los totales costo deberian ser: " + total);
                         //
                         //
@@ -216,93 +300,76 @@ firebase.auth().onAuthStateChanged(function (user) {
                         // a.value = total;
                         //
                         // costoProducto += total;
-                    }
 
+                    }
                 }
+
+
                 ingredientes.push({codigo: codigoing, cantidad: cantidading});
 
-
             }
-
             //Obtener los tags
             var tags = [];
             for (var i = 0; i < M.Chips.getInstance($('#etiquetass')).chipsData.length; i++) {
+
                 tags.push(M.Chips.getInstance($('#etiquetass')).chipsData[i].tag);
-
-            }
-            var seVende = true;
-
-            var paraFabricar = false;
-
-
-            var cantidad = $("#crstock").val();
-            var medida = $("#crmedida").val();
-            if (medida === "Do") {
-                cantidad = cantidad * 12;
-            }
-            if (medida === "Gr") {
-                cantidad = cantidad / 1000
-            }
-            if (medida === "Ml") {
-                cantidad = cantidad / 1000
             }
 
-            var unidadMedida = $('#crmedida :selected').parent().attr('label');
-            var precioCosto = 0;
-            precioCosto = $('#crPrecioCosto').val();
+
+            /* var stockCritico = parseFloat($("#crstockCritico").val());
+             var cantidad = $("#crstock").val();
+
+
+             var medida = $("#crmedida").val();*/
+            precioCosto = parseFloat($('#crPrecioCosto').val());
             var producto = {
                 proveedor: {
                     id: user.uid,
                     nombre: "Fabricacion Propia"
                 },
                 codigo: $("#crCodigo").val(),
-                seVende: seVende,
-                paraFabricar: paraFabricar,
+                seVende: true,
                 nombre: $("#crNombre").val(),
-                costo: {
-                    precio: precioCosto,
-                    precioPor: unidadMedida
-                },
+                formula: true,
+                costo: precioCosto,
                 descripcion: $("#crDescripcion").val(),
-                precioventa: $("#crPrecioVenta").val(),
-                stock: {
-                    cantidad: cantidad,
-                    medida: unidadMedida
-                },
-                stockcritico: $("#crstockCritico").val(),
+                precioventa: parseFloat($("#crPrecioVenta").val()),
+                stock: null,
+                stockcritico: null,
                 ingredientes: ingredientes,
                 tags: tags
             };
             console.log(producto);
             db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
                 .then(function () {
+                    console.log("Se ha guardado la formula correctamente");
 
-                    producto.ingredientes.forEach(function (element) {
-                        console.log(element.codigo);
-                        var sfDocRef = db.collection("Usuarios").doc(user.uid).collection("Productos").doc(element.codigo);
+                    /*      producto.ingredientes.forEach(function (element) {
+                              console.log(element.codigo);
+                              var sfDocRef = db.collection("Usuarios").doc(user.uid).collection("Productos").doc(element.codigo);
 
 
-                        return db.runTransaction(function (transaction) {
-                            // This code may get re-run multiple times if there are conflicts.
-                            return transaction.get(sfDocRef).then(function (sfDoc) {
-                                if (!sfDoc.exists) {
-                                    throw "Document does not exist!";
-                                }
+                              return db.runTransaction(function (transaction) {
+                                  // This code may get re-run multiple times if there are conflicts.
+                                  return transaction.get(sfDocRef).then(function (sfDoc) {
+                                      if (!sfDoc.exists) {
+                                          throw "Document does not exist!";
+                                      }
 
-                                var newPopulation = sfDoc.data().stock.cantidad - (element.cantidad * producto.stock.cantidad);
-                                transaction.update(sfDocRef, {
-                                    stock: {
-                                        cantidad: newPopulation,
-                                        medida: sfDoc.data().stock.medida
-                                    }
-                                });
-                            });
-                        }).then(function () {
-                            console.log("Transaction successfully committed!");
-                        }).catch(function (error) {
-                            console.log("Transaction failed: ", error);
-                        });
-                    });
+                                      var newPopulation = sfDoc.data().stock.cantidad - (element.cantidad * producto.stock.cantidad);
+                                      transaction.update(sfDocRef, {
+                                          stock: {
+                                              cantidad: newPopulation,
+                                              medida: sfDoc.data().stock.medida
+                                          }
+                                      });
+                                  });
+                              }).then(function () {
+                                  console.log("Transaction successfully committed!");
+                              }).catch(function (error) {
+                                  console.log("Transaction failed: ", error);
+                              });
+                          });*/
 
 
                 })
@@ -310,12 +377,12 @@ firebase.auth().onAuthStateChanged(function (user) {
                     console.error("Error writing document: ", error);
                 });
 
-
         });
 
 
-        $("#guardar").click(function () {
+        $("#guardarProducto").click(function () {
             var precioCosto;
+            var precioVenta = null;
             //Obtener los tags
             var tags = [];
             for (var i = 0; i < M.Chips.getInstance($('#etiquetas')).chipsData.length; i++) {
@@ -325,27 +392,14 @@ firebase.auth().onAuthStateChanged(function (user) {
             var seVende = false;
             if ($("#seVende").prop('checked')) {
                 seVende = true;
-            }
-            var paraFabricar = false;
-            if ($("#paraFabricar").prop('checked')) {
-                paraFabricar = true;
+                precioVenta = parseFloat($("#precioVenta").val())
             }
 
-            var cantidad = $("#stock").val();
+
+            var cantidad = parseInt($("#stock").val());
             var medida = $("#medida").val();
-            if (medida === "Do") {
-                cantidad = cantidad * 12;
-            }
-            if (medida === "Gr") {
-                cantidad = cantidad / 1000
-            }
-            if (medida === "Ml") {
-                cantidad = cantidad / 1000
-            }
 
-            precioCosto = parseInt($('#costo').val());
-            var unidadMedida = $('#medida :selected').parent().attr('label');
-            var precioPor = $('#precioPor :selected').parent().attr('label');
+            precioCosto = parseFloat($('#costo').val());
 
             var producto = {
                 proveedor: {
@@ -354,19 +408,16 @@ firebase.auth().onAuthStateChanged(function (user) {
                 },
                 codigo: $("#codigo").val(),
                 seVende: seVende,
-                paraFabricar: paraFabricar,
                 nombre: $("#nombre").val(),
-                costo: {
-                    precio: precioCosto,
-                    precioPor: precioPor
-                },
+                formula: false,
+                costo: precioCosto,
                 descripcion: $("#descripcion").val(),
-                precioventa: $("#precioVenta").val(),
+                precioventa: precioVenta,
                 stock: {
                     cantidad: cantidad,
-                    medida: unidadMedida
+                    medida: medida
                 },
-                stockcritico: $("#stockCritico").val(),
+                stockcritico: parseFloat($("#stockCritico").val()),
                 ingredientes: [{}],
                 tags: tags
             };
@@ -374,7 +425,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
             db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
                 .then(function () {
-                    console.log("Document successfully written!");
+                    console.log("Se ha creado un producto satisfactoriamente");
                 })
                 .catch(function (error) {
                     console.error("Error writing document: ", error);
@@ -395,10 +446,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             if ($("#edseVende").prop('checked')) {
                 seVende = true;
             }
-            var paraFabricar = false;
-            if ($("#edparaFabricar").prop('checked')) {
-                paraFabricar = true;
-            }
+
 
             var cantidad = $("#edstock").val();
             var medida = $("#edmedida").val();
@@ -423,7 +471,6 @@ firebase.auth().onAuthStateChanged(function (user) {
                 },
                 codigo: $("#edcodigo").val(),
                 seVende: seVende,
-                paraFabricar: paraFabricar,
                 nombre: $("#ednombre").val(),
                 costo: {
                     precio: $('#edcosto').val(),
