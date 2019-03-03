@@ -16,7 +16,7 @@ var proyeccionVenta = 0;
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        db.collection("Usuarios").doc(user.uid).collection("Proveedores").where("habilitado", "==", true).orderBy("rut").get().then(function (querySnapshot) {
+        db.collection("Empresas").doc(user.uid).collection("Proveedores").where("habilitado", "==", true).orderBy("rut").get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 cuantosProveedores++;
 
@@ -30,10 +30,10 @@ firebase.auth().onAuthStateChanged(function (user) {
         });
 
 
-        db.collection("Usuarios").doc(user.uid).collection("Productos").get().then(function (querySnapshot) {
+        db.collection("Empresas").doc(user.uid).collection("Productos").where("formula", "==", false).get().then(function (querySnapshot) {
 
             querySnapshot.forEach(function (doc) {
-                costoInventario += parseInt(doc.data().costo.precio * doc.data().stock.cantidad);
+                costoInventario += parseInt(doc.data().costo * doc.data().stock.cantidad);
                 if (!isNaN(parseInt(doc.data().precioventa))) {
                     proyeccionVenta += parseInt(doc.data().precioventa * doc.data().stock.cantidad);
                     console.log(parseInt(doc.data().precioventa));
@@ -42,7 +42,6 @@ firebase.auth().onAuthStateChanged(function (user) {
             });
         }).then(function () {
             $("#costoInventario").append("Haz Gastado $" + costoInventario + " en tu inventario");
-            $("#proyeccionVenta").append("El margen de ganancia de tu inventario es de $" + (proyeccionVenta - costoInventario));
         }).catch(function (error) {
             console.error("Error writing document: ", error);
         });

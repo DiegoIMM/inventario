@@ -1,4 +1,5 @@
 $("#login").click(function () {
+
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
 
@@ -7,7 +8,7 @@ $("#login").click(function () {
 
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
 
-        window.location.href = 'index.html';
+        //window.location.href = 'index.html';
 
     }).catch(function (error) {
         // Handle Errors here.

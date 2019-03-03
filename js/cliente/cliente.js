@@ -45,7 +45,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             };
 
 
-            db.collection("Usuarios").doc(user.uid).collection("Clientes").doc(cliente.rut).set(cliente).then(function () {
+            db.collection("Empresas").doc(user.uid).collection("Clientes").doc(cliente.rut).set(cliente).then(function () {
                 M.toast({html: 'El usuario se ha creado correctamente', classes: 'rounded green'});
 
                 crearTabla();
@@ -88,7 +88,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             };
 
 
-            db.collection("Usuarios").doc(user.uid).collection("Clientes").doc(eecliente.rut).set(eecliente).then(function () {
+            db.collection("Empresas").doc(user.uid).collection("Clientes").doc(eecliente.rut).set(eecliente).then(function () {
                 M.toast({html: 'El usuario se ha creado correctamente', classes: 'rounded green'});
 
                 crearTabla();
@@ -118,7 +118,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 "</thead>" +
                 "<tbody>";
 
-            db.collection("Usuarios").doc(user.uid).collection("Clientes").where("habilitado", "==", true).orderBy("rut").get().then(function (querySnapshot) {
+            db.collection("Empresas").doc(user.uid).collection("Clientes").where("habilitado", "==", true).orderBy("rut").get().then(function (querySnapshot) {
                 $("#cargandotabla").empty();
 
                 querySnapshot.forEach(function (doc) {
@@ -207,7 +207,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             rut = target.parent().data('rut');
 
             //Hago la consulta pasandole el rut capturado, si se realiza correctamente cargo los datos en la modal
-            var docRef = db.collection("Usuarios").doc(user.uid).collection("Clientes").doc(rut.toString());
+            var docRef = db.collection("Empresas").doc(user.uid).collection("Clientes").doc(rut.toString());
             docRef.get().then(function (doc) {
                     if (doc.exists) {
 

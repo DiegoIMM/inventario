@@ -1,45 +1,136 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <!--Import Google Icon Font-->
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection"/>
+
     <title>Venta</title>
+
     <!--Let browser know website is optimized for mobile-->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-
     <style>
+
         header, main, footer {
+
             padding-left: 300px;
+
         }
 
         @media only screen and (max-width: 992px) {
+
             header, main, footer {
+
                 padding-left: 0;
+
             }
+
         }
+
     </style>
+
 </head>
 
 <body>
 <div class="menuContainer"></div>
 <main>
-    este es venta
+    <h3>Venta</h3>
+
+    <div class="fixed-action-btn">
+
+        <a class="btn-floating btn-large waves-effect waves-light green modal-trigger z-depth-5 hoverable"
+           href="#modalAgregarVenta"><i class="material-icons">add</i></a>
+
+    </div>
 </main>
-<<<<<<< HEAD
+
+<!-- Modal para Crear -->
+
+<div id="modalAgregarVenta" class="modal modal-fixed-footer" style="width: 900px;max-width: 90%">
+
+    <div class="modal-content">
+
+        <div class="row">
+
+            <h4 class="col l6">Agregar Venta</h4>
+
+        </div>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="cliente" onchange="test(this)">
+                        <option value="" disabled selected>Seleccione un Cliente</option>
+
+                    </select>
+                    <label>Cliente</label>
+                </div>
+
+            </div>
+            <div class="divider"></div>
+            <br><br>
+            <div class="row">
+                <div class="col l4">
+                    <h7 id="nombreCliente">Nombre cliente</h7>
+                    <br>
+                    <h7 id="mailCliente">mail cliente</h7>
+                    <br>
+                    <h7 id="celularCliente">Celular cliente</h7>
+                </div>
+                <div class="col l4"></div>
+                <div class="col l4 center" style="border-color: red;border-width: 2px;border-style: solid;">
+                    <h7 class="center-align" id="rutCliente">Rut Cliente</h7>
+                    <br>
+
+                    Numero Transaccion
+                </div>
+            </div>
+            <div class="row">
+                <h7 class="col l2" id="miRut">Rut</h7>
+                <h7 class="col l4" id="miDireccion">Mi direccion</h7>
+                <h7 class="col l3" id="miNombre">Nomnre</h7>
+                <h7 class="col l3" id="miTelefono">Mi Telefono</h7>
+
+            </div>
+            <div class="row">
+                <h3>Productos</h3>
+                <table id="productos" class="striped" style="width:100%">
+
+                </table>
+
+                <br>
+                <a id="agregarProductos" class="waves-effect waves-light btn blue darken-4">
+                    <i class="material-icons left">playlist_add</i>Agregar Productos</a>
+
+
+            </div>
+            <br><br><br>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">attach_money</i>
+                <input id="total" type="number" class="validate" value="0">
+                <label class="active" for="total">Total</label>
+            </div>
+        </form>
+
+
+    </div>
+
+    <div class="modal-footer">
+        <a id="guardarVenta" class="modal-action green modal-close waves-effect waves-green btn-flat">Guardar</a>
+    </div>
+
+</div>
+
+
 <!--JavaScript at end of body for optimized loading-->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-    $(document).init(function () {
-        $('.menuContainer').load('./menu.html');
-    });
-</script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
 
-
-=======
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script>
@@ -60,18 +151,10 @@
 
 <script src="js/venta/venta.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCXpdq1RwfMJlEe39etBlcRYAQxvLki88E",
-        authDomain: "inv2-66cfb.firebaseapp.com",
-        databaseURL: "https://inv2-66cfb.firebaseio.com",
-        projectId: "inv2-66cfb",
-        storageBucket: "inv2-66cfb.appspot.com",
-        messagingSenderId: "288920973734";
-    firebase.initializeApp(config);
-</script>
+
+</body>
+
+</html>
 
 
 </body>

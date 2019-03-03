@@ -30,7 +30,7 @@ $('#crmedida').change(function () {
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
 // funcc escucho los datos y los pinto en la tabla creada
-        db.collection("Usuarios").doc(user.uid).collection("Productos").where("formula", "==", false).orderBy("codigo")
+        db.collection("Empresas").doc(user.uid).collection("Productos").where("formula", "==", false).orderBy("codigo")
             .onSnapshot(function (querySnapshot) {
                 $("#productos").empty();
                 //$("#cargandotabla").empty();
@@ -114,7 +114,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 // funcc escucho los datos y los pinto en la tabla creada
-        db.collection("Usuarios").doc(user.uid).collection("Productos").where("formula", "==", true).orderBy("codigo")
+        db.collection("Empresas").doc(user.uid).collection("Productos").where("formula", "==", true).orderBy("codigo")
             .onSnapshot(function (querySnapshot) {
                 $("#Formulas").empty();
                 //$("#cargandotabla").empty();
@@ -198,7 +198,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 //funcc Se carga el select con los proveedores activos
-        db.collection("Usuarios").doc(user.uid).collection("Proveedores").where("habilitado", "==", true).orderBy("rut")
+        db.collection("Empresas").doc(user.uid).collection("Proveedores").where("habilitado", "==", true).orderBy("rut")
             .onSnapshot(function (querySnapshot) {
 
 
@@ -228,7 +228,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 "<td class=\"input-field\">" +
                 " <select onchange='sumaFormulas()'>" +
                 "<option value=\"\" disabled selected>Productos</option>";
-            db.collection("Usuarios").doc(user.uid).collection("Productos").where("formula", "==", false).
+            db.collection("Empresas").doc(user.uid).collection("Productos").where("formula", "==", false).
             orderBy("codigo").get().then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
 
@@ -340,13 +340,14 @@ firebase.auth().onAuthStateChanged(function (user) {
                 tags: tags
             };
             console.log(producto);
-            db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
+            db.collection("Empresas").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
                 .then(function () {
                     console.log("Se ha guardado la formula correctamente");
+                    M.toast({html: 'Se ha guardado la formula correctamente', classes: 'rounded green'});
 
                     /*      producto.ingredientes.forEach(function (element) {
                               console.log(element.codigo);
-                              var sfDocRef = db.collection("Usuarios").doc(user.uid).collection("Productos").doc(element.codigo);
+                              var sfDocRef = db.collection("Empresas").doc(user.uid).collection("Productos").doc(element.codigo);
 
 
                               return db.runTransaction(function (transaction) {
@@ -423,7 +424,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             };
             console.log(producto);
 
-            db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
+            db.collection("Empresas").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
                 .then(function () {
                     console.log("Se ha creado un producto satisfactoriamente");
                 })
@@ -486,7 +487,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             };
             console.log(producto);
 
-            db.collection("Usuarios").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
+            db.collection("Empresas").doc(user.uid).collection("Productos").doc(producto.codigo).set(producto)
                 .then(function () {
                     console.log("Document successfully written!");
                 })
@@ -512,11 +513,11 @@ firebase.auth().onAuthStateChanged(function (user) {
             codigo = target.parent().data('codigo');
             console.log(codigo);
             //Hago la consulta pasandole el rut capturado, si se realiza correctamente cargo los datos en la modal
-            var docRef = db.collection("Usuarios").doc(user.uid).collection("Productos").doc(codigo.toString());
+            var docRef = db.collection("Empresas").doc(user.uid).collection("Productos").doc(codigo.toString());
             docRef.get().then(function (doc) {
                     if (doc.exists) {
 //Se carga el select con los proveedores activos
-                        db.collection("Usuarios").doc(user.uid).collection("Proveedores").where("habilitado", "==", true).orderBy("rut")
+                        db.collection("Empresas").doc(user.uid).collection("Proveedores").where("habilitado", "==", true).orderBy("rut")
                             .onSnapshot(function (querySnapshot) {
 
 
