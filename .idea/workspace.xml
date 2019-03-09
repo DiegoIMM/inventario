@@ -3,18 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="81998348-ae07-431c-b1ee-b2c13fcbb235" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compra.html" beforeDir="false" afterPath="$PROJECT_DIR$/compra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iniciarSesion.html" beforeDir="false" afterPath="$PROJECT_DIR$/iniciarSesion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/cliente/cliente.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cliente/cliente.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/compra/compra.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/compra/compra.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/producto/producto.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/producto/producto.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/proveedor/proveedor.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/proveedor/proveedor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/venta/venta.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/venta/venta.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proveedor.html" beforeDir="false" afterPath="$PROJECT_DIR$/proveedor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/venta.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,41 +23,42 @@
     <session id="-886040470">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="28" />
-          <entry key="js" value="36" />
+          <entry key="html" value="29" />
+          <entry key="js" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="28" />
-          <entry key="JavaScript" value="36" />
+          <entry key="HTML" value="29" />
+          <entry key="JavaScript" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="13" />
-          <entry key="html" value="2096" />
-          <entry key="js" value="5661" />
-          <entry key="txt" value="103" />
+          <entry key="html" value="2788" />
+          <entry key="js" value="5915" />
+          <entry key="txt" value="186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="15" />
-          <entry key="HTML" value="2096" />
-          <entry key="JavaScript" value="5659" />
-          <entry key="PLAIN_TEXT" value="103" />
+          <entry key="HTML" value="2788" />
+          <entry key="JavaScript" value="5913" />
+          <entry key="PLAIN_TEXT" value="186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -76,21 +71,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/proveedor/proveedor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="214" column="31" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
+            <state relative-caret-position="408">
+              <caret line="216" column="13" selection-start-line="216" selection-start-column="13" selection-end-line="216" selection-end-column="13" />
               <folding>
-                <element signature="e#36#306#0" />
-                <element signature="e#684#4627#0" />
                 <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="e#2728#4202#0" />
-                <element signature="e#4805#8982#0" />
                 <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="e#11223#11459#0" />
-                <element signature="e#22798#24789#0" />
+                <element signature="e#10105#11144#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iniciarSesion.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="463">
+              <caret line="67" column="55" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/producto/producto.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1284">
+              <caret line="339" column="18" lean-forward="true" selection-start-line="339" selection-start-column="18" selection-end-line="339" selection-end-column="18" />
+              <folding>
+                <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/venta/venta.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="259" column="24" lean-forward="true" selection-start-line="259" selection-start-column="24" selection-end-line="259" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/compra/compra.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="390" lean-forward="true" selection-start-line="390" selection-end-line="390" />
+              <folding>
+                <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/menu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -98,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proveedor.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="196" column="16" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="16" />
+            <state relative-caret-position="-1567">
+              <caret line="107" column="48" lean-forward="true" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -174,14 +225,14 @@
         <option value="$PROJECT_DIR$/js/cliente/cliente.js" />
         <option value="$PROJECT_DIR$/js/compra/compra.js" />
         <option value="$PROJECT_DIR$/js/index/index.js" />
-        <option value="$PROJECT_DIR$/js/producto/producto.js" />
-        <option value="$PROJECT_DIR$/js/venta/venta.js" />
         <option value="$PROJECT_DIR$/js/menu.js" />
         <option value="$PROJECT_DIR$/producto.html" />
-        <option value="$PROJECT_DIR$/iniciarSesion.html" />
         <option value="$PROJECT_DIR$/js/login.js" />
+        <option value="$PROJECT_DIR$/js/producto/producto.js" />
         <option value="$PROJECT_DIR$/proveedor.html" />
+        <option value="$PROJECT_DIR$/iniciarSesion.html" />
         <option value="$PROJECT_DIR$/js/proveedor/proveedor.js" />
+        <option value="$PROJECT_DIR$/js/venta/venta.js" />
       </list>
     </option>
   </component>
@@ -305,7 +356,8 @@
       <workItem from="1548783752074" duration="5533000" />
       <workItem from="1549078715361" duration="14249000" />
       <workItem from="1549780247571" duration="15911000" />
-      <workItem from="1550840404693" duration="24421000" />
+      <workItem from="1550840404693" duration="24643000" />
+      <workItem from="1551653346867" duration="5080000" />
     </task>
     <task id="LOCAL-00001" summary="Segunda Subida">
       <created>1549744282786</created>
@@ -363,15 +415,21 @@
       <option name="project" value="LOCAL" />
       <updated>1549854165669</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Limpieza de codigo y parte medular terminada, faltan validar todos los formularios">
+      <created>1551578232121</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1551578232121</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60114000" />
+    <option name="totallyTimeSpent" value="65416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2494043" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -451,7 +509,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;cliente.html&#10;#&#9;compra.html&#10;#&#9;js/cliente/cliente.js&#10;#&#9;js/index/index.js&#10;#&#9;js/producto/producto.js&#10;#&#9;producto.html&#10;#&#9;venta.html" />
     <MESSAGE value="Arreglos en productos" />
     <MESSAGE value="Arreglos en productos y al index" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglos en productos y al index" />
+    <MESSAGE value="Limpieza de codigo y parte medular terminada, faltan validar todos los formularios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Limpieza de codigo y parte medular terminada, faltan validar todos los formularios" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cliente.html">
@@ -491,11 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
           <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#2;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#4;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -519,17 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/compra/compra.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="299" column="43" selection-start-line="299" selection-start-column="43" selection-end-line="299" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#!!block;n#sumaFormulas#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/cliente/cliente.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -547,10 +590,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/validadorForm/validate.js" />
+    <entry file="file://$PROJECT_DIR$/producto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1815">
+          <caret line="294" column="67" selection-start-line="294" selection-start-column="67" selection-end-line="294" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/validateForm/validate.js" />
+    <entry file="file://$PROJECT_DIR$/js/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iniciarSesion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="67" column="55" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/proveedor/proveedor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="216" column="13" selection-start-line="216" selection-start-column="13" selection-end-line="216" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="e#10105#11144#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proveedor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1567">
+          <caret line="107" column="48" lean-forward="true" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/producto/producto.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="200" column="31" selection-start-line="200" selection-start-column="31" selection-end-line="200" selection-end-column="31" />
+        <state relative-caret-position="1284">
+          <caret line="339" column="18" lean-forward="true" selection-start-line="339" selection-start-column="18" selection-end-line="339" selection-end-column="18" />
           <folding>
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
@@ -560,79 +659,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/venta/venta.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="185" column="54" selection-start-line="185" selection-start-column="54" selection-end-line="185" selection-end-column="54" />
+        <state relative-caret-position="64">
+          <caret line="259" column="24" lean-forward="true" selection-start-line="259" selection-start-column="24" selection-end-line="259" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/compra/compra.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="390" lean-forward="true" selection-start-line="390" selection-end-line="390" />
           <folding>
-            <element signature="n#!!block;n#sumaFormulas#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/validadorForm/validate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/producto.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="294" column="67" selection-start-line="294" selection-start-column="67" selection-end-line="294" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iniciarSesion.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/validateForm/validate.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proveedor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="196" column="16" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/proveedor/proveedor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="214" column="31" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
-          <folding>
-            <element signature="e#36#306#0" />
-            <element signature="e#684#4627#0" />
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="e#2728#4202#0" />
-            <element signature="e#4805#8982#0" />
-            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="e#11223#11459#0" />
-            <element signature="e#22798#24789#0" />
           </folding>
         </state>
       </provider>

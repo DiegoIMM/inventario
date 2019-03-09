@@ -60,13 +60,17 @@ firebase.auth().onAuthStateChanged(function (user) {
         $("#agregarProductos").on("click", nuevo);
 
         function nuevo() {
+            var preciocosto = 0;
+
             var productosformula = "<tr>" +
                 "<td class=\"input-field\">" +
                 " <select onchange='sumaFormulas()'>" +
                 "<option value=\"\" disabled selected>Productos</option>";
             db.collection("Empresas").doc(user.uid).collection("Productos").where("seVende", "==", true).get().then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    productosformula += "<option data-precio=\"" + doc.data().precioventa + "\" value=\"" + doc.data().codigo + "\">" + doc.data().nombre + "</option>";
+                    productosformula += "<option data-medida=\"" + doc.data().stock.medida + "\" data-precio=\"" + doc.data().precioventa + "\" value=\"" + doc.data().codigo + "\">" + doc.data().nombre + "</option>";
+                    preciocosto = doc.data().costo;
+
                 });
 
                 productosformula += "</select>" +
@@ -105,12 +109,12 @@ firebase.auth().onAuthStateChanged(function (user) {
                 console.log("Error getting document:", error);
             });
 
-        })
+        });
 
 
         $("#guardarVenta").click(function () {
             var fecha = new Date();
-
+            var unidadDeMedida = "";
             var total = parseInt($("#total").val());
             var cantidadProductos = [];
             var codigoProducto, cantidadProducto;
@@ -128,7 +132,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                         // console.log("Los precios costo deberian ser: " + precioCosto)
 
 
-                        //  unidadDeMedida = $('option:selected', $('table#formula tr')[i].children[k].children[0].children[3]).attr('data-medida');
+                        unidadDeMedida = $('option:selected', $('table#productos tr')[i].children[k].children[0].children[3]).attr('data-medida');
                         codigoProducto = $('option:selected', $('table#productos tr')[i].children[k].children[0].children[3]).attr('value');
 
                         // producto = $('table#formula tr')[i].children[k].children[0].children[3].value;
@@ -138,8 +142,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 
                         //console.log("Las Cantidades deberian ser: " + cantidad);
 
-                        // var m = $('table#formula tr')[i].children[1].children[0];
-                        // m.placeholder = "Medida: " + unidadDeMedida;
+                        var m = $('table#productos tr')[i].children[1].children[0];
+                        m.placeholder = "Medida: " + unidadDeMedida;
                     } else if (k === 2) {
 
 

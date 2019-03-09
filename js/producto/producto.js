@@ -334,7 +334,10 @@ firebase.auth().onAuthStateChanged(function (user) {
                 costo: precioCosto,
                 descripcion: $("#crDescripcion").val(),
                 precioventa: parseFloat($("#crPrecioVenta").val()),
-                stock: null,
+                stock: {
+                    cantidad: null,
+                    medida: "Unidad"
+                },
                 stockcritico: null,
                 ingredientes: ingredientes,
                 tags: tags

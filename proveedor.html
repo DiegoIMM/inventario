@@ -11,12 +11,12 @@
 
 
     <style>
-                                                    header, main, footer {
+        header, main, footer {
             padding-left: 300px;
         }
 
         @media only screen and (max-width: 992px) {
-                                                    header, main, footer {
+            header, main, footer {
                 padding-left: 0;
             }
         }
@@ -68,60 +68,64 @@
 <!-- Modal para Crear -->
 <div id="modalAgregarProveedor" class="modal">
     <div class="modal-content">
-        <div class="row">
+        <form onkeyup="validar()" onclick="validar()">
 
-            <h4 class="col l6">Crear Proveedor</h4>
+            <div class="row">
 
-            <div class="col l6 right-align">
-                <div class="switch">
-                    <label>
-                        Inhabilitado
-                        <input id="habilitado" type="checkbox" checked>
-                        <span class="lever"></span>
-                        Habilitado
-                    </label>
+                <h4 class="col l6">Crear Proveedor</h4>
+                <div class="col l6 right-align">
+                    <div class="switch">
+                        <label>
+                            Inhabilitado
+                            <input id="habilitado" type="checkbox" checked>
+                            <span class="lever"></span>
+                            Habilitado
+                        </label>
+                    </div>
                 </div>
+
             </div>
 
-        </div>
 
+            <div class="row">
 
-        <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <input id="epRut" type="text" class="validate" placeholder="123456789">
+                    <label for="epRut">Rut</label>
+                    <span class="helper-text" data-error="Ingrese un rut valido" data-success="Rut validado"></span>
 
-            <div class="input-field col s6">
-                <i class="material-icons prefix">perm_identity</i>
-                <input id="epRut" type="text" class="validate" data-error="Ingrese un rut valido"
-                       placeholder="123456789">
-                <label for="epRut">Rut</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">business</i>
+                    <input id="epRazonSocial" type="text" class="validate">
+                    <label for="epRazonSocial">Razon Social (empresa)</label>
+                    <span class="helper-text" data-error="Campo obligatorio" data-success="Correcto"></span>
+
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="name" type="text" class="validate">
+                    <label for="name">Nombre corto</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">contact_phone</i>
+                    <input id="epCelular" type="number" class="validate">
+                    <label for="epCelular">Celular</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">contact_mail</i>
+                    <input id="epcorreo" type="email" class="validate">
+                    <label for="epcorreo">Mail</label>
+                    <span class="helper-text" data-error="ingrese un email valido" data-success="Correcto"></span>
+                </div>
+
             </div>
-
-            <div class="input-field col s6">
-                <i class="material-icons prefix">business</i>
-                <input id="epRazonSocial" type="text" class="validate">
-                <label for="epRazonSocial">Razon Social (empresa)</label>
-            </div>
-
-            <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="name" type="text" class="validate">
-                <label for="name">Nombre corto</label>
-            </div>
-
-            <div class="input-field col s6">
-                <i class="material-icons prefix">contact_phone</i>
-                <input id="epCelular" type="number" class="validate">
-                <label for="epCelular">Celular</label>
-            </div>
-
-            <div class="input-field col s6">
-                <i class="material-icons prefix">contact_mail</i>
-                <input id="epcorreo" type="email" class="validate">
-                <label for="epcorreo">Mail</label>
-                <span class="helper-text" data-error="ingrese un email valido" data-success="Correcto"></span>
-            </div>
-
-        </div>
-
+        </form>
     </div>
     <div class="modal-footer">
         <a id="botonguardar"

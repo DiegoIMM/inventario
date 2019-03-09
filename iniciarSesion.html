@@ -10,35 +10,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 
-
-
 </head>
 
 <body>
 
 
-
 <main>
 
 
-    <div class="row">
-        <form class="col s12">
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Logo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="badges.html">Quienes somos</a></li>
+                <li><a href="collapsible.html">Reportar un error</a></li>
+            </ul>
+        </div>
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a href="#info">Informacion</a></li>
+                <li class="tab"><a href="#registrarse">Registrarse</a></li>
+                <li class="tab"><a class="active" href="#iniciarS">Iniciar Sesion</a></li>
+                <li class="tab disabled"><a href="#contactanos">Contactanos</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <div class="row">
-                <div class="input-field col s12">
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="badges.html">Quienes Somos</a></li>
+        <li><a href="collapsible.html">Reportar un error</a></li>
+    </ul>
+
+    <div id="info" class="col s12">Aqui va a ir toda la info para enganchar a los clientes nuevos</div>
+    <div id="registrarse" class="col s12">
+        Aqui pondre un formulario para que las personas creen su propia cuenta con sus datos de correo y emrpresa
+    </div>
+    <div id="iniciarS" class="col s12 center-align">
+        <form class="row">
+
+            <div class="row col s6 offset-s3">
+                <div class="input-field">
                     <input id="email" type="email" class="validate">
                     <label for="email">Email</label>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
+            <div class="row col s6 offset-s3">
+                <div class="input-field">
                     <input id="password" type="password" class="validate">
                     <label for="password">Password</label>
                 </div>
             </div>
         </form>
+        <a id="iniciarSesion" class="green waves-effect waves-light btn"><i class="material-icons right">send</i>Iniciar
+            Sesion</a>
     </div>
-    <a id="login" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Iniciar Sesion</a>
+    <div id="contactanos" class="col s12">Aqui va a ir un formulario de contacto</div>
+
 
 </main>
 
@@ -51,8 +79,6 @@
     M.AutoInit();
 
 </script>
-
-
 
 
 <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
@@ -68,7 +94,6 @@
     };
     firebase.initializeApp(config);
 </script>
-
 
 
 <script src="js/login.js"></script>

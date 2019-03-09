@@ -213,6 +213,8 @@ firebase.auth().onAuthStateChanged(function (user) {
             console.log(prove);
 
             //todo Validar formulario antes de guardarlo
+
+           // alert(validar());
             db.collection("Empresas").doc(user.uid).collection("Proveedores").doc(prove.rut).set(prove);
             M.toast({html: 'El Proveedor se ha creado correctamente', classes: 'rounded green'});
 
@@ -310,10 +312,22 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
-//todo
+
+function validar() {
+
+    if ($("#epRut").val() == 1234) {
+        $("#epRut").addClass("invalid");
+        return false
+    }
+    if ($("#epRazonSocial").val().length < 3) {
+        $("#epRazonSocial").addClass("invalid");
+        return false
+
+    }
+    return true
 
 
-
+}
 
 
 
