@@ -1,4 +1,4 @@
-// Key Firebase
+// Key Firebase HEYHEYEHASHDASO
 var config = {
     apiKey: "AIzaSyCXpdq1RwfMJlEe39etBlcRYAQxvLki88E",
     authDomain: "inv2-66cfb.firebaseapp.com",
